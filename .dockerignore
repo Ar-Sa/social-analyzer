@@ -1,5 +1,2 @@
-.dockerignore
-.git
-info
-readme/
 Dockerfile
+charts/
