@@ -1,9 +1,11 @@
-FROM node:14.15.3-alpine3.12
+FROM node:19
+ENV PORT 3000
+EXPOSE 3000
+
+RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
+COPY package.json .
+RUN npm install
 COPY . .
-RUN apk update && \
-  apk add --no-cache firefox-esr && \
-  npm install lodash && \
-  npm install --loglevel=error
-EXPOSE 9005
-ENTRYPOINT [ "npm", "start", "--","--docker"]
+
+CMD ["npm", "start"]
